@@ -1,4 +1,5 @@
 export interface ResultItem {
+    id: number;
     firstScore: number
     firstTeam: string
     secondScore: number

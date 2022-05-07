@@ -2,7 +2,7 @@
 
 <div class="text-center" *ngFor="let item of filteredResult | keyvalue">
   <h4 >{{item.key}}</h4>
-  <div *ngFor="let val of item?.value" class="result-wrapper my-2">
+  <div *ngFor="let val of item?.value" class="result-wrapper my-2" (click)="redirectToEdit(val.id)">
       <span [ngClass]="{'won': val.firstScore > val.secondScore}">{{val.firstTeam}} ({{val.firstScore}})</span> vs 
       <span [ngClass]="{'won': val.firstScore < val.secondScore}">{{val.secondTeam}}({{val.secondScore}})</span>
   </div>

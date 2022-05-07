@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ResultItem } from 'src/app/interfaces/result-interfaces';
-import {  ResultsService } from 'src/app/services/results.service';
+import { ResultsService } from 'src/app/services/results.service';
 
 
 @Component({
@@ -29,12 +29,13 @@ export class CreateResultComponent implements OnInit {
 
   onSubmitResultsForm(): void {
     this.formSubmitted = true;
-    if (this.resultsForm.invalid) {
-      return;
-    }
-    const rawValue: ResultItem = this.resultsForm.getRawValue();
+    if (this.resultsForm.invalid) { return; }
+
+    const rawValue: ResultItem = { id: Date.now(), ...this.resultsForm.getRawValue() };
+
     rawValue.firstTeam = rawValue.firstTeam.toLocaleLowerCase().trim();
     rawValue.secondTeam = rawValue.secondTeam.toLocaleLowerCase().trim();
+
     this.resultsService.setResult(rawValue);
   }
 
