@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { ResultItem } from 'src/app/core/interfaces/result-interfaces';
+import { ResultFormData, ResultItem } from 'src/app/core/interfaces/result-interfaces';
 import { ResultsService } from 'src/app/core/services/results.service';
 
 
@@ -11,31 +10,16 @@ import { ResultsService } from 'src/app/core/services/results.service';
 })
 export class CreateResultComponent implements OnInit {
 
-  resultsForm = this.fb.group({
-    firstTeam: ['', [Validators.required]],
-    secondTeam: ['', [Validators.required]],
-    firstScore: ['', [Validators.required]],
-    secondScore: ['', [Validators.required]],
-    date: [null, Validators.required]
-  });
 
-  public formSubmitted = false;
-
-  constructor(private fb: FormBuilder, private resultsService: ResultsService) { }
+  constructor( private resultsService: ResultsService) { }
 
   ngOnInit() { }
 
-  get f(): any { return this.resultsForm.controls; }
 
-  onSubmitResultsForm(): void {
-    this.formSubmitted = true;
-    if (this.resultsForm.invalid) { return; }
-
-    const rawValue: ResultItem = { id: Date.now(), ...this.resultsForm.getRawValue() };
-
-    rawValue.firstTeam = rawValue.firstTeam.toLocaleLowerCase().trim();
-    rawValue.secondTeam = rawValue.secondTeam.toLocaleLowerCase().trim();
-
+  onSubmitResultsForm(resultFormData: ResultFormData): void {
+    resultFormData.firstTeam = resultFormData.firstTeam.toLocaleLowerCase().trim();
+    resultFormData.secondTeam = resultFormData.secondTeam.toLocaleLowerCase().trim();
+    const rawValue: ResultItem = { id: Date.now(), ...resultFormData };
     this.resultsService.setResult(rawValue);
   }
 

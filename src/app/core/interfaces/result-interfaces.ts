@@ -1,5 +1,8 @@
-export interface ResultItem {
+export interface ResultItem extends ResultFormData {
     id: number;
+}
+
+export interface ResultFormData {
     firstScore: number
     firstTeam: string
     secondScore: number

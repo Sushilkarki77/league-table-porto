@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ResultsItemGroupedWithDate } from 'src/app/core/interfaces/result-interfaces';
-import { groupResultsWithDate } from 'src/app/core/utils/results.utils';
 import { ResultsService } from 'src/app/core/services/results.service';
+import { groupResultsWithDate } from 'src/app/core/utils/results.utils';
 
 
 @Component({

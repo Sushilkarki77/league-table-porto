@@ -9,13 +9,15 @@ import { CreateResultComponent } from './components/create-result/create-result.
 import { LeagueTableComponent } from './components/league-table/league-table.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateResultFormComponent } from './components/create-result-form/create-result-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResultsComponent,
     CreateResultComponent,
-    LeagueTableComponent
+    LeagueTableComponent,
+    CreateResultFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,61 @@
+<form [formGroup]="resultsForm" (ngSubmit)="onSubmitResultsForm()">
+
+    <div class="score-wrapper">
+      <div class="form-group my-1">
+        <label>Team Name</label>
+        <input type="text" class="form-control rounded-0 is-invalid" [ngClass]="{ 'is-invalid': formSubmitted && f.firstTeam.errors }" formControlName="firstTeam"
+          placeholder="Team Name">
+        <div *ngIf="formSubmitted && f.firstTeam.errors" class="invalid-feedback">
+          <div *ngIf="f.firstTeam.errors.required">
+            This Form field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group my-1">
+        <label>Team Name</label>
+        <input type="text" class="form-control rounded-0 is-invalid" [ngClass]="{ 'is-invalid': formSubmitted && f.secondTeam.errors }" formControlName="secondTeam"
+          placeholder="Team name">
+        <div *ngIf="formSubmitted && f.secondTeam.errors" class="invalid-feedback">
+          <div *ngIf="f.secondTeam.errors.required">
+            This Form field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group my-1">
+        <label>Score</label>
+        <input type="number" class="form-control rounded-0" formControlName="firstScore"  [ngClass]="{ 'is-invalid': formSubmitted && f.firstScore.errors }" placeholder="Score">
+        <div *ngIf="formSubmitted && f.firstScore.errors" class="invalid-feedback">
+          <div *ngIf="f.firstScore.errors.required">
+            This Form field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group my-1">
+        <label>Score</label>
+        <input type="number" class="form-control rounded-0" formControlName="secondScore"  [ngClass]="{ 'is-invalid': formSubmitted && f.secondScore.errors }" placeholder="Score">
+        <div *ngIf="formSubmitted && f.secondScore.errors" class="invalid-feedback">
+          <div *ngIf="f.secondScore.errors.required">
+            This Form field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group my-1">
+        <label>Date</label>
+          <input type="date" placeholder="match date" formControlName="date" class="form-control rounded-0"  [ngClass]="{ 'is-invalid': formSubmitted && f.date.errors }">
+            <div *ngIf="formSubmitted && f.date.errors" class="invalid-feedback">
+                <div *ngIf="f.date.errors.required">
+                  This Form field is required
+                </div>
+              </div>
+        </div>
+
+    </div>
+
+    <div class="d-flex justify-content-center my-3">
+        <button class="btn btn-outline-primary" type="submit">Enter Result</button>
+    </div>
+  </form>
