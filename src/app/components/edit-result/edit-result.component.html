@@ -1,0 +1,8 @@
+<app-create-result-form *ngIf="resultItem else exceptionTemplate" [resultItem]="resultItem" (onFormSubmit)="onSubmitResultsForm($event)"></app-create-result-form>
+
+
+<ng-template #exceptionTemplate>
+   <div class="text-center">
+    Oops!! Content you are looking for doesn't exist
+   </div> 
+</ng-template>

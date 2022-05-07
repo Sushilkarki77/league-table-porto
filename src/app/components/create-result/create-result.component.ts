@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ResultFormData, ResultItem } from 'src/app/core/interfaces/result-interfaces';
 import { ResultsService } from 'src/app/core/services/results.service';
 
@@ -11,7 +12,7 @@ import { ResultsService } from 'src/app/core/services/results.service';
 export class CreateResultComponent implements OnInit {
 
 
-  constructor( private resultsService: ResultsService) { }
+  constructor( private resultsService: ResultsService, private router: Router) { }
 
   ngOnInit() { }
 
@@ -21,6 +22,7 @@ export class CreateResultComponent implements OnInit {
     resultFormData.secondTeam = resultFormData.secondTeam.toLocaleLowerCase().trim();
     const rawValue: ResultItem = { id: Date.now(), ...resultFormData };
     this.resultsService.setResult(rawValue);
+    this.router.navigateByUrl(`standings`);
   }
 
 }

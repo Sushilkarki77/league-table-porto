@@ -1,6 +1,7 @@
+import { Input } from '@angular/core';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ResultFormData } from 'src/app/core/interfaces/result-interfaces';
+import { ResultFormData, ResultItem } from 'src/app/core/interfaces/result-interfaces';
 
 @Component({
   selector: 'app-create-result-form',
@@ -12,6 +13,15 @@ export class CreateResultFormComponent implements OnInit {
   @Output() onFormSubmit = new EventEmitter<ResultFormData>();
 
   formSubmitted = false;
+
+  @Input()
+  public set resultItem(resultItem: ResultItem) {
+    Object.entries(resultItem).forEach(([key, value]) => {
+      this.resultsForm.patchValue({
+        [key]: value
+      })
+    });
+  }
 
   resultsForm = this.fb.group({
     firstTeam: ['', [Validators.required]],
@@ -34,6 +44,8 @@ export class CreateResultFormComponent implements OnInit {
     if (this.resultsForm.invalid) { return; }
 
     this.onFormSubmit.emit(this.resultsForm.getRawValue());
-   }
+
+    this.resultsForm.reset();
+  }
 
 }

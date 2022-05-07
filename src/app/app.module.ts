@@ -10,6 +10,7 @@ import { LeagueTableComponent } from './components/league-table/league-table.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateResultFormComponent } from './components/create-result-form/create-result-form.component';
+import { EditResultComponent } from './components/edit-result/edit-result.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CreateResultFormComponent } from './components/create-result-form/creat
     ResultsComponent,
     CreateResultComponent,
     LeagueTableComponent,
-    CreateResultFormComponent
+    CreateResultFormComponent,
+    EditResultComponent
   ],
   imports: [
     BrowserModule,
