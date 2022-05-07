@@ -11,6 +11,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateResultFormComponent } from './components/create-result-form/create-result-form.component';
 import { EditResultComponent } from './components/edit-result/edit-result.component';
+import { StoreModule } from '@ngrx/store';
+import { resultReducer } from './state/results.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -26,8 +30,13 @@ import { EditResultComponent } from './components/edit-result/edit-result.compon
     AppRoutingModule,
     ButtonsModule.forRoot(),
     ReactiveFormsModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    StoreModule.forRoot({results: resultReducer}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
