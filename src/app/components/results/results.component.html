@@ -1,0 +1,11 @@
+<h3 class="text-center">Premier League</h3>
+
+<div class="text-center" *ngFor="let item of filteredResult | keyvalue">
+  <h4 >{{item.key}}</h4>
+  <div *ngFor="let val of item?.value" class="result-wrapper my-2">
+      <span [ngClass]="{'won': val.firstScore > val.secondScore}">{{val.firstTeam}} ({{val.firstScore}})</span> vs 
+      <span [ngClass]="{'won': val.firstScore < val.secondScore}">{{val.secondTeam}}({{val.secondScore}})</span>
+  </div>
+  
+</div>
+

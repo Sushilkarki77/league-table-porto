@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="py-5 text-center d-flex justify-content-center">
+    <button type="button" class=" btn btn-outline-primary mx-2" [routerLink]="['results']" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" >
+      Results
+    </button>
+    <button type="button" class=" btn btn-outline-primary  mx-2" [routerLink]="['create-result']" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}">
+      New Results
+    </button>
+    <button type="button" class=" btn btn-outline-primary  mx-2" [routerLink]="['standings']" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}">
+      Table
+    </button>
+  </div>
+  <router-outlet></router-outlet>
+</div>
