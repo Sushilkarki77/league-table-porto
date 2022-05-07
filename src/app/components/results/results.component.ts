@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ResultsItemGroupedWithDate } from 'src/app/interfaces/result-interfaces';
-import { ResultsService } from 'src/app/services/results.service';
-import { groupResultsWithDate } from 'src/app/utils/results.utils';
+import { ResultsItemGroupedWithDate } from 'src/app/core/interfaces/result-interfaces';
+import { groupResultsWithDate } from 'src/app/core/utils/results.utils';
+import { ResultsService } from 'src/app/core/services/results.service';
 
 
 @Component({
@@ -23,5 +23,6 @@ export class ResultsComponent implements OnInit {
   redirectToEdit(id: number): void{
     this.router.navigate([`edit-result/${id}`]);
   }
+
 
 }

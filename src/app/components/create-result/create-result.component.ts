@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ResultItem } from 'src/app/interfaces/result-interfaces';
-import { ResultsService } from 'src/app/services/results.service';
+import { ResultItem } from 'src/app/core/interfaces/result-interfaces';
+import { ResultsService } from 'src/app/core/services/results.service';
 
 
 @Component({
