@@ -2,11 +2,11 @@ import { ResultItem, ResultsItemGroupedWithDate } from "../interfaces/result-int
 
  export const groupResultsWithDate = (resultParam: Array<ResultItem>): ResultsItemGroupedWithDate => {
   return resultParam.reduce((acc: ResultsItemGroupedWithDate, curr: ResultItem) => {
-    if (acc[curr.date]) {
-      acc[curr.date] = [...acc[curr.date], curr]
+    if (acc[curr.date.toString()]) {
+      acc[curr.date.toString()] = [...acc[curr.date.toString()], curr]
     }
     else {
-      acc[curr.date] = [curr]
+      acc[curr.date.toString()] = [curr]
     }
     return acc
   }, {});

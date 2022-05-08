@@ -7,7 +7,7 @@ export interface ResultFormData {
     firstTeam: string
     secondScore: number
     secondTeam: string,
-    date: string,
+    date: Date,
     firstTeamName?: string,
     secondTeamName?: string
 }

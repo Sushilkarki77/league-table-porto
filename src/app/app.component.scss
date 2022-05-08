@@ -1,0 +1,22 @@
+:host{
+    display: block;
+    height: 100%;
+    width: 100%
+}
+
+.app-wrapper {
+    width: 720px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem;
+
+}
+
+
+.body-wrapper{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    box-shadow: 0 2px 6px 1px rgb(44 64 90 / 10%);
+}

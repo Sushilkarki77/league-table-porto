@@ -1,3 +1,6 @@
+<h3 class="text-center">Edit Result</h3>
+
+
 <app-create-result-form *ngIf="resultItem else exceptionTemplate" [resultItem]="resultItem" (onFormSubmit)="onSubmitResultsForm($event)"></app-create-result-form>
 
 

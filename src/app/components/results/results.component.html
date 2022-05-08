@@ -1,11 +1,14 @@
 <h3 class="text-center">Premier League</h3>
 
-<div class="text-center" *ngFor="let item of filteredResult | keyvalue">
-  <h4 >{{item.key}}</h4>
-  <div *ngFor="let val of item?.value" class="result-wrapper my-2" (click)="redirectToEdit(val.id)">
+<div class="text-center date-wrapper" *ngFor="let item of sortedDates">
+  <h6 >{{item}}</h6>
+  <div *ngFor="let val of filteredResult[item]" class="result-wrapper my-2" (click)="redirectToEdit(val.id)">
       <span [ngClass]="{'won': val.firstScore > val.secondScore}">{{val.firstTeam}} ({{val.firstScore}})</span> vs 
       <span [ngClass]="{'won': val.firstScore < val.secondScore}">{{val.secondTeam}}({{val.secondScore}})</span>
   </div>
   
 </div>
+
+<h5 class="text-center" *ngIf="sortedDates.length === 0">League is yet to be started</h5>
+
 

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container app-wrapper">
   <div class="py-5 text-center d-flex justify-content-center">
     <button type="button" class=" btn btn-outline-primary mx-2" [routerLink]="['results']" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" >
       Results
@@ -10,5 +10,8 @@
       Table
     </button>
   </div>
-  <router-outlet></router-outlet>
+
+  <div class="body-wrapper">
+    <router-outlet></router-outlet>
+  </div>
 </div>

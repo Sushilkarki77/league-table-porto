@@ -1,10 +1,22 @@
+
+
 .result-wrapper {
     cursor: pointer;
     text-transform: capitalize;
+    transition: box-shadow 0.5s;
+
+    &:hover {
+        box-shadow: 0 2px 6px 1px rgba(44, 64, 90, 0.1);
+    }
+
     span{
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
     .won{
         color: limegreen;
     }
+}
+
+.date-wrapper {
+    border-top: dotted 1px;
 }
