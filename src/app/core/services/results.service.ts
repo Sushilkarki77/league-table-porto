@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LeagueTableItem, LeagueTableObject, ResultItem, TableColumns } from '../interfaces/result-interfaces';
+import { capitalizeString } from '../utils/results.utils';
 
 const defaultResultItem: LeagueTableItem = {
   teamName: '',
@@ -20,8 +21,8 @@ const defaultResultItem: LeagueTableItem = {
 export class ResultsService {
   computeTableData(rawResults: Array<ResultItem>): Array<LeagueTableItem> {
     const sortedObject: LeagueTableObject = rawResults.reduce((acc: LeagueTableObject, curr: ResultItem) => {
-      const trimmedFirstTeam = curr.firstTeam.toLowerCase().trim();
-      const trimmedSecondTeam = curr.secondTeam.toLowerCase().trim();
+      const trimmedFirstTeam = capitalizeString(curr.firstTeam.toLowerCase().trim());
+      const trimmedSecondTeam = capitalizeString(curr.secondTeam.toLowerCase().trim());
 
       const existingItem = acc[trimmedFirstTeam] ? { ...acc[trimmedFirstTeam] } : { ...defaultResultItem };
       acc[trimmedFirstTeam] = {
@@ -53,5 +54,6 @@ export class ResultsService {
   checkResultType(currentTeamScore: number, nextTeamScore: number): 'win' | 'loose' | 'tie' {
     return currentTeamScore > nextTeamScore ? 'win' : currentTeamScore < nextTeamScore ? 'loose' : 'tie';
   }
+
 
 }
