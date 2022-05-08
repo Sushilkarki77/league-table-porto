@@ -31,3 +31,12 @@ export interface LeagueTableItem {
     pts: number
 }
 
+export interface TableData {
+    tableColumns: TableColumns[],
+    data: any
+  }
+  
+  export interface TableColumns {
+    key: string,
+    heading: string
+  }

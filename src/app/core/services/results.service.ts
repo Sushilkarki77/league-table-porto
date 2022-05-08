@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LeagueTableItem, LeagueTableObject, ResultItem } from '../interfaces/result-interfaces';
+import { LeagueTableItem, LeagueTableObject, ResultItem, TableColumns } from '../interfaces/result-interfaces';
 
 const defaultResultItem: LeagueTableItem = {
   teamName: '',
@@ -9,6 +9,9 @@ const defaultResultItem: LeagueTableItem = {
   l: 0,
   pts: 0
 };
+
+
+ 
 
 
 @Injectable({

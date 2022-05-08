@@ -16,6 +16,7 @@ import { resultReducer } from './state/results.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { storageMetaReducer } from './state/store.metareducer';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { storageMetaReducer } from './state/store.metareducer';
     CreateResultComponent,
     LeagueTableComponent,
     CreateResultFormComponent,
-    EditResultComponent
+    EditResultComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
