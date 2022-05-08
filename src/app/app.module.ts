@@ -15,6 +15,7 @@ import { StoreModule } from '@ngrx/store';
 import { resultReducer } from './state/results.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { storageMetaReducer } from './state/store.metareducer';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,11 @@ import { environment } from 'src/environments/environment';
     ButtonsModule.forRoot(),
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({results: resultReducer}),
+    StoreModule.forRoot({
+      results: resultReducer
+    }, {
+      metaReducers: [storageMetaReducer]
+    }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
