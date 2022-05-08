@@ -16,3 +16,18 @@ export interface ResultsItemGroupedWithDate {
     [key: string]: Array<ResultItem>
 }
 
+
+export interface LeagueTableObject {
+    [key: string]: LeagueTableItem
+}
+
+
+export interface LeagueTableItem {
+    teamName: string,
+    pld: number,
+    w: number,
+    d: number,
+    l: number,
+    pts: number
+}
+
