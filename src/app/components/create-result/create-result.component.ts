@@ -14,19 +14,18 @@ import { addResult } from 'src/app/state/results.actions';
 export class CreateResultComponent implements OnInit {
 
 
-  constructor( private resultsService: ResultsService, private router: Router, private store: Store) { }
+  constructor(private router: Router, private store: Store) { }
 
   ngOnInit() { }
 
 
   onSubmitResultsForm(resultFormData: ResultFormData): void {
-    resultFormData.firstTeam = resultFormData.firstTeam.toLocaleLowerCase().trim();
-    resultFormData.secondTeam = resultFormData.secondTeam.toLocaleLowerCase().trim();
-    
-    const rawValue: ResultItem = { id: Date.now(), ...resultFormData };
-    this.resultsService.setResult(rawValue);
+    const rawValue: ResultItem = {
+      id: Date.now(),
+      ...resultFormData
+    };
 
-    this.store.dispatch(addResult({content: rawValue}));
+    this.store.dispatch(addResult({ content: rawValue }));
     this.router.navigateByUrl(`standings`);
   }
 
