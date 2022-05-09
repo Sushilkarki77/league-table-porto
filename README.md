@@ -1,4 +1,4 @@
-# GithubSurfingApp
+# Demo App
 
 This is the repository for Interview Demo.
 
