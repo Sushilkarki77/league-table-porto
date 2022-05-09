@@ -1,27 +1,47 @@
-# InterviewDemo
+# GithubSurfingApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+This is the repository for Interview Demo.
 
-## Development server
+## Project Structure
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+The project structure is as follows.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+--> src                                 // Main angular application
+-------> core                           // Contains services and interfaces
+-------> components                     // Components
+-------> state                          // App State
+```
 
-## Build
+![image info](./src/assets/architecture.jpg)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Requirements
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Node 14
+NPM 7
+Angular 13 `npm install -g @angular/cli`
 
-## Running end-to-end tests
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Used Packages
+```
 
-## Further help
+Bootstrap           // css framework
+NgRX                // State Management
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Getting started
+
+```
+git clone https://github.com/Sushilkarki77/interview-demo-1.git
+cd interview-demo-1
+npm install
+ng serve
+```
+
+## Demo
+https://interview-demo-sk.herokuapp.com/results
