@@ -1,7 +1,7 @@
-const express = require('express');
-const path = require('path');
+var express = require('express');
+var path = require('path');
 
-const app = express();
+var app = express();
 
 
 app.use(express.static(__dirname + '/dist/interview-demo'));
