@@ -52,10 +52,10 @@ export class ResultsService {
 
   getUpdatedTableItem(tableItem: LeagueTableItem, resultType: 'win' | 'loose' | 'tie'): { pld: number, w: number, d: number, l: number, pts: number } {
     return {
-      pld: tableItem.pld ++,
-      w: resultType === 'win' ? tableItem.w++ : tableItem.w,
-      d: resultType === 'tie' ? tableItem.d++ : tableItem.d,
-      l: resultType === 'loose' ? tableItem.l++ : tableItem.l,
+      pld: tableItem.pld +1,
+      w: resultType === 'win' ? tableItem.w+1 : tableItem.w,
+      d: resultType === 'tie' ? tableItem.d+1 : tableItem.d,
+      l: resultType === 'loose' ? tableItem.l+1 : tableItem.l,
       pts: resultType === 'win' ? tableItem.pts + winPoint : resultType === 'tie' ? tableItem.pts + drawPoint : tableItem.pts
     }
   }
