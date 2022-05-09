@@ -50,6 +50,6 @@ export class EditResultComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.resultSubscription.unsubscribe();
+    this.resultSubscription?.unsubscribe();
   }
 }
