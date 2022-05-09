@@ -44,4 +44,4 @@ ng serve
 ```
 
 ## Demo
-https://interview-demo-sk.herokuapp.com/results
+https://interview-demo-sk.herokuapp.com
