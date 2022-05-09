@@ -1,3 +1,8 @@
 <h3 class="text-center">League Table</h3>
 
-<app-table [leagueTableData] ="leagueTableData"></app-table>
+<app-table  *ngIf="leagueTableData.data.length > 0 else exceptionTemplate" [leagueTableData] ="leagueTableData"></app-table>
+
+<ng-template #exceptionTemplate>
+    <h5 class="text-center" *ngIf="leagueTableData.data.length === 0">League is yet to be started</h5>
+</ng-template>
+

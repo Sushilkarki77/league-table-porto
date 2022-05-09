@@ -6,7 +6,7 @@ import { AppState } from 'src/app/state/app.state';
 import { selectAllResults } from 'src/app/state/results.selectors';
 
 const leagueTableColumns: TableColumns[] = [
-  { key: 'index', heading: 'Pos' },
+  { key: 'pos', heading: 'Pos' },
   { key: 'teamName', heading: 'Team Name' },
   { key: 'pld', heading: 'Pld' },
   { key: 'w', heading: 'W' },
@@ -41,6 +41,8 @@ export class LeagueTableComponent implements OnInit {
         tableColumns: [...leagueTableColumns],
         data: this.resultsService.computeTableData(key)
       };
+
+      console.log( this.leagueTableData.data);
     })
   }
 

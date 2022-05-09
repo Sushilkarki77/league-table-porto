@@ -23,6 +23,7 @@ export interface LeagueTableObject {
 
 
 export interface LeagueTableItem {
+    pos?: number,
     teamName: string,
     pld: number,
     w: number,
@@ -32,7 +33,7 @@ export interface LeagueTableItem {
 }
 
 export interface TableData {
-    tableColumns: TableColumns[],
+    tableColumns: Array<TableColumns>,
     data: any
   }
   

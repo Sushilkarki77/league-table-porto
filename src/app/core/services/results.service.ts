@@ -12,7 +12,7 @@ const defaultResultItem: LeagueTableItem = {
 };
 
 
- 
+
 
 
 @Injectable({
@@ -24,13 +24,13 @@ export class ResultsService {
       const trimmedFirstTeam = capitalizeString(curr.firstTeam.toLowerCase().trim());
       const trimmedSecondTeam = capitalizeString(curr.secondTeam.toLowerCase().trim());
 
-      const existingItem = acc[trimmedFirstTeam] ? { ...acc[trimmedFirstTeam] } : { ...defaultResultItem };
+      const existingItem = acc[trimmedFirstTeam] || { ...defaultResultItem };
       acc[trimmedFirstTeam] = {
         teamName: trimmedFirstTeam,
         ...this.getUpdatedTableItem(existingItem, this.checkResultType(curr.firstScore, curr.secondScore))
       }
 
-      const existingItemSecond = acc[trimmedSecondTeam] ? { ...acc[trimmedSecondTeam] } : { ...defaultResultItem };
+      const existingItemSecond = acc[trimmedSecondTeam] || { ...defaultResultItem };
       acc[trimmedSecondTeam] = {
         teamName: trimmedSecondTeam,
         ...this.getUpdatedTableItem(existingItemSecond, this.checkResultType(curr.secondScore, curr.firstScore))
@@ -38,16 +38,16 @@ export class ResultsService {
       return acc;
     }, {});
 
-    return Object.values(sortedObject).sort((a, b) => b.pts - a.pts);
+    return Object.values(sortedObject).sort((a, b) => b.pts - a.pts).map((key, index) => { key.pos = index + 1; return key })
   }
 
   getUpdatedTableItem(tableItem: LeagueTableItem, resultType: 'win' | 'loose' | 'tie'): { pld: number, w: number, d: number, l: number, pts: number } {
     return {
       pld: tableItem.pld + 1,
-      w: resultType === 'win' ? tableItem.w + 1 : tableItem.w,
-      d: resultType === 'tie' ? tableItem.d + 1 : tableItem.d,
-      l: resultType === 'loose' ? tableItem.l + 1 : tableItem.l,
-      pts: resultType === 'win' ? tableItem.pts + 3 : resultType === 'tie' ? tableItem.pts + 1 : tableItem.pts
+      w: resultType === 'win' ? tableItem.w++ : tableItem.w,
+      d: resultType === 'tie' ? tableItem.d++ : tableItem.d,
+      l: resultType === 'loose' ? tableItem.l++ : tableItem.l,
+      pts: resultType === 'win' ? tableItem.pts + 3 : resultType === 'tie' ? tableItem.pts++ : tableItem.pts
     }
   }
 

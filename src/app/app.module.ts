@@ -31,7 +31,7 @@ import { TableComponent } from './components/table/table.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ButtonsModule.forRoot(),
+    ButtonsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({

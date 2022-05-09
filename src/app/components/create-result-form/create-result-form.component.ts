@@ -1,6 +1,6 @@
 import { Input } from '@angular/core';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResultFormData, ResultItem } from 'src/app/core/interfaces/result-interfaces';
 
 @Component({
@@ -25,7 +25,7 @@ export class CreateResultFormComponent implements OnInit {
 
   resultsForm = this.fb.group({
     firstTeam: ['', [Validators.required,]],
-    secondTeam: ['', [Validators.required, this.duplicateTeamValidation.bind(this)]],
+    secondTeam: ['', [Validators.required, this.duplicateTeamValidation]],
     firstScore: ['', [Validators.required, Validators.min(0), Validators.max(50)]],
     secondScore: ['', [Validators.required, Validators.min(0), Validators.max(50)]],
     date: ['', Validators.required]
@@ -47,7 +47,6 @@ export class CreateResultFormComponent implements OnInit {
         return;
       }
 
-      // set error on matchingControl if validation fails
       if (control.value === matchingControl.value) {
         matchingControl.setErrors({ shouldNotMatch: true });
       } else {
