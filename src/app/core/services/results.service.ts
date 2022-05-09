@@ -11,9 +11,18 @@ const defaultResultItem: LeagueTableItem = {
   pts: 0
 };
 
+export const leagueTableColumns: Array<TableColumns> = [
+  { key: 'pos', heading: 'Pos' },
+  { key: 'teamName', heading: 'Team Name' },
+  { key: 'pld', heading: 'Pld' },
+  { key: 'w', heading: 'W' },
+  { key: 'd', heading: 'D' },
+  { key: 'l', heading: 'L' },
+  { key: 'pts', heading: 'Pts' }
+]
 
-
-
+const winPoint = 3;
+const drawPoint = 1;
 
 @Injectable({
   providedIn: 'root'
@@ -43,11 +52,11 @@ export class ResultsService {
 
   getUpdatedTableItem(tableItem: LeagueTableItem, resultType: 'win' | 'loose' | 'tie'): { pld: number, w: number, d: number, l: number, pts: number } {
     return {
-      pld: tableItem.pld + 1,
+      pld: tableItem.pld ++,
       w: resultType === 'win' ? tableItem.w++ : tableItem.w,
       d: resultType === 'tie' ? tableItem.d++ : tableItem.d,
       l: resultType === 'loose' ? tableItem.l++ : tableItem.l,
-      pts: resultType === 'win' ? tableItem.pts + 3 : resultType === 'tie' ? tableItem.pts++ : tableItem.pts
+      pts: resultType === 'win' ? tableItem.pts + winPoint : resultType === 'tie' ? tableItem.pts + drawPoint : tableItem.pts
     }
   }
 

@@ -1,3 +1,4 @@
+import { OnDestroy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -13,13 +14,13 @@ import { selectAllResults } from 'src/app/state/results.selectors';
   templateUrl: './edit-result.component.html',
   styleUrls: ['./edit-result.component.scss']
 })
-export class EditResultComponent implements OnInit {
+export class EditResultComponent implements OnInit, OnDestroy {
 
   resultId: number;
 
   resultItem: ResultItem | null;
 
-  routerSubscription: Subscription;
+  resultSubscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,8 +44,12 @@ export class EditResultComponent implements OnInit {
     if (!id) { return; }
     this.resultId = +id;
 
-    this.store.select(selectAllResults).subscribe((key: Array<ResultItem>) => {
+    this.resultSubscription = this.store.select(selectAllResults).subscribe((key: Array<ResultItem>) => {
       this.resultItem = key.find(key => key.id === this.resultId) || null;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.resultSubscription.unsubscribe();
   }
 }

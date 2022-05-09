@@ -1,11 +1,10 @@
-:host{
-    display: block;
-    padding: 1rem;
+:host {
+  display: block;
+  padding: 1rem;
 }
 
 .score-wrapper {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 1rem;
-  }
-  
+  grid-template-columns: auto auto;
+  display: grid;
+  grid-gap: 1rem;
+}

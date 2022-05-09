@@ -1,10 +1,12 @@
+import { OnDestroy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { ResultItem, ResultsItemGroupedWithDate } from 'src/app/core/interfaces/result-interfaces';
 import { groupResultsWithDate } from 'src/app/core/utils/results.utils';
 import { AppState } from 'src/app/state/app.state';
-import { selectAllResults, selectResults } from 'src/app/state/results.selectors';
+import { selectAllResults } from 'src/app/state/results.selectors';
 
 
 @Component({
@@ -12,9 +14,11 @@ import { selectAllResults, selectResults } from 'src/app/state/results.selectors
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss']
 })
-export class ResultsComponent implements OnInit {
+export class ResultsComponent implements OnInit, OnDestroy {
 
   filteredResult: ResultsItemGroupedWithDate;
+
+  resultSubscription: Subscription;
 
   sortedDates: Array<string>;
 
@@ -33,5 +37,9 @@ export class ResultsComponent implements OnInit {
 
   redirectToEdit(id: number): void {
     this.router.navigate([`create-result/${id}`]);
+  }
+
+  ngOnDestroy(): void{
+   this.resultSubscription.unsubscribe();
   }
 }
