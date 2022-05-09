@@ -1,6 +1,6 @@
 import { Input } from '@angular/core';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ResultFormData, ResultItem } from 'src/app/core/interfaces/result-interfaces';
 
 @Component({
@@ -24,16 +24,36 @@ export class CreateResultFormComponent implements OnInit {
   }
 
   resultsForm = this.fb.group({
-    firstTeam: ['', [Validators.required]],
-    secondTeam: ['', [Validators.required]],
-    firstScore: ['', [Validators.required]],
-    secondScore: ['', [Validators.required]],
+    firstTeam: ['', [Validators.required,]],
+    secondTeam: ['', [Validators.required, this.duplicateTeamValidation.bind(this)]],
+    firstScore: ['', [Validators.required, Validators.min(0), Validators.max(50)]],
+    secondScore: ['', [Validators.required, Validators.min(0), Validators.max(50)]],
     date: ['', Validators.required]
+  }, {
+    validator: this.duplicateTeamValidation('firstTeam', 'secondTeam')
   });
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+  }
+
+  duplicateTeamValidation(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors['shouldNotMatch']) {
+        return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value === matchingControl.value) {
+        matchingControl.setErrors({ shouldNotMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    }
   }
 
 

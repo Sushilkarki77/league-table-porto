@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'create-result', pathMatch: 'full' },
   { path: 'results', component: ResultsComponent },
   { path: 'create-result', component: CreateResultComponent },
-  { path: 'edit-result/:id', component: EditResultComponent },
+  { path: 'create-result/:id', component: EditResultComponent },
   { path: 'standings', component: LeagueTableComponent }
 ];
 

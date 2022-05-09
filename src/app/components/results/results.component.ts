@@ -32,6 +32,6 @@ export class ResultsComponent implements OnInit {
   }
 
   redirectToEdit(id: number): void {
-    this.router.navigate([`edit-result/${id}`]);
+    this.router.navigate([`create-result/${id}`]);
   }
 }
