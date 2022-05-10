@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { LeagueTableItem, LeagueTableObject, ResultItem, TableColumns } from '../interfaces/result-interfaces';
+import { TableColumns } from 'projects/table/src/public-api';
+import { LeagueTableItem, LeagueTableObject, ResultItem } from '../interfaces/result-interfaces';
 import { capitalizeString } from '../utils/results.utils';
 
 const defaultResultItem: LeagueTableItem = {

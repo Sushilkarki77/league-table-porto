@@ -16,7 +16,7 @@ import { resultReducer } from './state/results.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { storageMetaReducer } from './state/store.metareducer';
-import { TableComponent } from './components/table/table.component';
+import { TableModule } from 'projects/table/src/lib/table.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,6 @@ import { TableComponent } from './components/table/table.component';
     LeagueTableComponent,
     CreateResultFormComponent,
     EditResultComponent,
-    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +33,7 @@ import { TableComponent } from './components/table/table.component';
     ButtonsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    TableModule,
     StoreModule.forRoot({
       results: resultReducer
     }, {

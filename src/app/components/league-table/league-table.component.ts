@@ -1,8 +1,9 @@
 import { OnDestroy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { TableData } from 'projects/table/src/public-api';
 import { Subscription } from 'rxjs';
-import { ResultItem, TableData } from 'src/app/core/interfaces/result-interfaces';
+import { ResultItem } from 'src/app/core/interfaces/result-interfaces';
 import { leagueTableColumns, ResultsService } from 'src/app/core/services/results.service';
 import { AppState } from 'src/app/state/app.state';
 import { selectAllResults } from 'src/app/state/results.selectors';
