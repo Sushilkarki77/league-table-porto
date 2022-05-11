@@ -7,9 +7,7 @@ export interface ResultFormData {
     firstTeam: string
     secondScore: number
     secondTeam: string,
-    date: Date,
-    firstTeamName?: string,
-    secondTeamName?: string
+    date: Date
 }
 
 export interface ResultsItemGroupedWithDate {
