@@ -28,9 +28,9 @@ Angular 13 `npm install -g @angular/cli`
 
 ## Used Packages
 ```
-
-Bootstrap           // css framework
-NgRX                // State Management
+Bootstrap              // css framework
+@ngrx/store            // State Management
+@ngrx/store-devtools   // dev tool for NgRx
 ```
 
 
