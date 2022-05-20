@@ -31,7 +31,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
   subScribeToState(): void {
     this.resultSubscription = this.store.select(selectAllResults).subscribe((key: Array<ResultItem>) => {
       this.filteredResult = groupResultsWithDate(key);
-      this.sortedDates = Object.keys(this.filteredResult).sort().reverse();
+      this.sortedDates = Object.keys(this.filteredResult).sort((a,b) => new Date(b).getTime() - new Date(a).getTime());
     });
   }
 
