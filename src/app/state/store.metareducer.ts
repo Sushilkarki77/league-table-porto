@@ -1,5 +1,4 @@
 import { ActionReducer, Action } from '@ngrx/store';
-import { merge, pick } from 'lodash-es';
 
 function setSavedState(state: any, localStorageKey: string) {
   localStorage.setItem(localStorageKey, JSON.stringify(state));
@@ -18,16 +17,18 @@ export function storageMetaReducer<S, A extends Action = Action>(reducer: Action
   let onInit = true; // after load/refresh…
   return function (state: S, action: A): S {
     // reduce the nextState.
-    const nextState = reducer(state, action);
+    const nextState: any = reducer(state, action);
     // init the application state.
     if (onInit) {
       onInit = false;
       const savedState = getSavedState(localStorageKey);
-      return merge(nextState, savedState);
+      nextState.results.items = [...nextState?.results?.items, ...savedState]
+      return nextState;
     }
     // save the next state to the application storage.
-    const stateToSave = pick(nextState, stateKeys);
-    setSavedState(stateToSave, localStorageKey);
+    if(nextState?.results?.items){ // So, we want to save results.items to local storage.
+      setSavedState(nextState?.results?.items, localStorageKey);
+    } 
     return nextState;
   };
 }
