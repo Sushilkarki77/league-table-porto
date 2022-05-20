@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TableData } from 'table';
+import { TableData } from './table-interfaces';
 
 @Component({
   selector: 'lib-table',
