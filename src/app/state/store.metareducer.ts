@@ -8,8 +8,6 @@ function getSavedState(localStorageKey: string) {
   if (item) { return JSON.parse(item); }
 }
 
-// the keys from state which we'd like to save.
-const stateKeys = ['results.items'];
 // the key for the local storage.
 const localStorageKey = '__app_storage__';
 

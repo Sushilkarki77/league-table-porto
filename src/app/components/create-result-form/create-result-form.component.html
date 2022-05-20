@@ -71,6 +71,9 @@
                 <div *ngIf="f.date.errors.required">
                   This Form field is required
                 </div>
+                <div *ngIf="f.date.errors.futureDate">
+                  Future Dates are not allowed
+                </div>
               </div>
         </div>
 

@@ -25,12 +25,12 @@ export class CreateResultFormComponent implements OnInit {
 
   resultsForm = this.fb.group({
     firstTeam: ['', [Validators.required,]],
-    secondTeam: ['', [Validators.required, this.duplicateTeamValidation]],
+    secondTeam: ['', [Validators.required]],
     firstScore: ['', [Validators.required, Validators.min(0), Validators.max(50)]],
     secondScore: ['', [Validators.required, Validators.min(0), Validators.max(50)]],
     date: ['', Validators.required]
   }, {
-    validator: this.duplicateTeamValidation('firstTeam', 'secondTeam')
+    validator: [this.duplicateTeamValidation('firstTeam', 'secondTeam'), this.dateValidator('date')]
   });
 
   constructor(private fb: FormBuilder) { }
@@ -52,6 +52,22 @@ export class CreateResultFormComponent implements OnInit {
       } else {
         matchingControl.setErrors(null);
       }
+    }
+  }
+
+  dateValidator(controlName: string){
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+       const currentDate = new Date().toISOString().slice(0, 10);
+      if (control.errors && !control.errors['futureDate']) {
+        return;
+      }
+
+      if(control.value > currentDate) { // future date is detected
+        control.setErrors({ futureDate: true });
+      } else {
+        control.setErrors(null);
+      }      
     }
   }
 
