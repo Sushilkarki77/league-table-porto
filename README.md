@@ -37,7 +37,7 @@ Bootstrap              // css framework
 ## Getting started
 
 ```
-git clone https://github.com/Sushilkarki77/interview-demo-1.git
+git@github.com:Sushilkarki77/league-table-porto.git
 cd interview-demo-1
 npm install
 ng serve
